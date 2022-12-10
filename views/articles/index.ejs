@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div class="container">
+    <h1>Blog</h1>
+    <a href="/articles/new">New Article</a>
+
+    
+        <% articles.forEach(articles =>{%>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h4>
+                            <%= articles.title %>
+                        </h4>
+                    </div>   
+                    <div class="card-subtitle">
+                        <%= articles.createdAt.toLocaleDateString() %>
+                    </div>
+                    <div class="card-text">
+                        <%= articles.description %>
+
+                    </div>       
+                    <a href="/articles/<%= articles.slug %>">Show</a> 
+                    <form action="/articles/<%= articles.id %>?_method=DELETE" method="post">
+                        <button type="submit">Delete</button>
+                    </form>         
+                </div>
+               
+            </div>
+        <% }) %>  
+    
+    
+   </div>
+    
+</body>
+</html>
